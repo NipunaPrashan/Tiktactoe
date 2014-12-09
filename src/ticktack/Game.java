@@ -3,7 +3,6 @@ package ticktack;
 public class Game {
 
     private final Table gameBoard; // decalring the game board
-
     private Player player1, player2;
 
     public Game(Player player1, Player player2) {
@@ -37,7 +36,6 @@ public class Game {
             return -2;
     }
 
-    /* pass the turns between the players*/
     public void changePlayer() {
         Player temp = player1;
         player1 = player2;

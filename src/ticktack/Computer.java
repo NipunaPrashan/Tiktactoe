@@ -7,8 +7,7 @@ public class Computer extends Player{
     }
     
     public int[] chose(Table table){
-        
-        System.out.println("Computer's turn...");
+
                 Cell lastMove = table.oneMoveLeftToWin(getUserSymbol());
                 System.out.println("current player's last move: " + lastMove);
                 Cell oppLastMove = table.oneMoveLeftToWin(getOpponent().getUserSymbol());

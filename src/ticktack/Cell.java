@@ -10,7 +10,6 @@ public class Cell {
     private int machine;
 
     public Cell() {
-        // System.out.println("bla bla bla...");
     }
 
     public Cell(int x, int y, int status) {

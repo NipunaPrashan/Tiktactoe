@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ticktack;
 
 import javax.swing.Icon;
@@ -13,19 +9,16 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Suchira
+ * @author Prashan
  */
-public class SinglePlayerJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form testJFrame
-     */
+public class SinglePlayerJFrame extends javax.swing.JFrame {
     private Game game;
     private Person player1;
     private Computer player2;
     private boolean finished;
     private String thePlayer;
-    History hs;
+    private History hs;
     private Table tabl;
 
     @SuppressWarnings("empty-statement")
@@ -311,10 +304,10 @@ public class SinglePlayerJFrame extends javax.swing.JFrame {
         if (game.isGameOver() == player1.getUserSymbol()) {
             
             JOptionPane.showMessageDialog(new JDialog(), "Game WIN by " + player1.getName());
-                    hs.setPlayer1St("Won");
-                    hs.setPlayer2St("Lost");
                     hs.setPlayer1(thePlayer);
                     hs.setPlayer2("Computer");
+                    hs.setPlayer1St("Won");
+                    hs.setPlayer2St("Lost");
                     hs.setType(1);
                     hs.saveData(thePlayer);
             
@@ -326,10 +319,10 @@ public class SinglePlayerJFrame extends javax.swing.JFrame {
         if (game.isGameOver() == player2.getUserSymbol()) {
             
             JOptionPane.showMessageDialog(new JDialog(), "Game WIN by " + player2.getName());
-                    hs.setPlayer1St("Lost");
-                    hs.setPlayer2St("Won");
                     hs.setPlayer1(thePlayer);
                     hs.setPlayer2("Computer");
+                    hs.setPlayer1St("Lost");
+                    hs.setPlayer2St("Won");
                     hs.setType(1);
                     hs.saveData(thePlayer);
             finished = true;
@@ -338,10 +331,10 @@ public class SinglePlayerJFrame extends javax.swing.JFrame {
         if (game.isGameOver() == -1) {
            
             JOptionPane.showMessageDialog(new JDialog(), "Game is DRAW");
-                    hs.setPlayer1St("Draw");
-                    hs.setPlayer2St("Draw");
                     hs.setPlayer1(thePlayer);
                     hs.setPlayer2("Computer");
+                    hs.setPlayer1St("Draw");
+                    hs.setPlayer2St("Draw");
                     hs.setType(1);
                     hs.saveData(thePlayer);
             finished = true;

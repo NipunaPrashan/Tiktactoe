@@ -15,8 +15,8 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
     private Person player2;
     private boolean finished;
     private Table tabl;
-    Game game;
-    History hs;
+    private Game game;
+    private History hs;
 
     public MultiPlayerJFrame(Person player1, Person player2, Table tabl) {
         initComponents();
