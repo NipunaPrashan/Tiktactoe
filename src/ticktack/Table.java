@@ -20,17 +20,17 @@ public class Table {
             winArray[i] = new WinningCombinations(grid[i][0], grid[i][1], grid[i][2]);  // [0 , 0, 0]
         }
         for (int i = 3; i < 6; i++) {
-            winArray[i] = new WinningCombinations(grid[0][i - 3], grid[1][i - 3], grid[2][i - 3]); // [0     ]
-                                                                                            // [0     ]
-                                                                                            // [0     ]
+            winArray[i] = new WinningCombinations(grid[0][i - 3], grid[1][i - 3], grid[2][i - 3]);  // [0     ]
+                                                                                                    // [0     ]
+                                                                                                    // [0     ]
         }
-        winArray[6] = new WinningCombinations(grid[0][0], grid[1][1], grid[2][2]);                 // [0     ]
-                                                                                            // [  0   ]
-                                                                                            // [     0]
+        winArray[6] = new WinningCombinations(grid[0][0], grid[1][1], grid[2][2]);                  // [0     ]
+                                                                                                    // [  0   ]
+                                                                                                    // [     0]
         
-        winArray[7] = new WinningCombinations(grid[0][2], grid[1][1], grid[2][0]);                 // [     0]
-                                                                                            // [  0   ]
-                                                                                            // [0     ] 
+        winArray[7] = new WinningCombinations(grid[0][2], grid[1][1], grid[2][0]);                  // [     0]
+                                                                                                    // [  0   ]
+                                                                                                    // [0     ] 
 
         int st = 0, i=0;
 
@@ -59,7 +59,7 @@ public class Table {
         midCell = grid[1][1];          //this is the center cell
     }
 
-    public void selectTheCell(int x, int y, int status) {     //User or Machine (X/0)
+    public void selectTheCell(int x, int y, int status) {      //User or Machine (X/0)
         if (!grid[x][y].isClicked()) {               
             grid[x][y].setStatus(status);
             grid[x][y].setIsClicked(true);
@@ -110,7 +110,7 @@ public class Table {
 
     public Cell oneMoveLeftToWin(int status) {               //return the last cell and one move to win
         for (int i = 0; i < 8; i++) {
-            if (winArray[i].oneMoveToWin(status)) {
+            if (winArray[i].checkingWhetherOneMoveToWin(status)) {
                 return winArray[i].getEndCell();
             }
         }
@@ -128,6 +128,9 @@ public class Table {
 
     public boolean isTheCellClicked(int x, int y) {
         return grid[x][y].isClicked();                     // is the cell clicked
+    }
+    public void setTheCellClicked(int x, int y) {
+         grid[x][y].setIsClicked(true);                    // is the cell clicked
     }
 
     public boolean isTableFull() {                         // is the table full

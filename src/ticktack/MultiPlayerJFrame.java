@@ -10,13 +10,17 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
 
     private int player;
     private Person player1;
+    private String player1Name;
+    private String player2Name;
     private Person player2;
     private boolean finished;
+    private Table tabl;
     Game game;
     History hs;
 
-    public MultiPlayerJFrame(Person player1, Person player2) {
+    public MultiPlayerJFrame(Person player1, Person player2, Table tabl) {
         initComponents();
+        this.tabl = tabl;
         this.setLocationRelativeTo(null);
         this.player1 = player1;
         this.player2 = player2;
@@ -55,9 +59,13 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
         Button9 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("MultiPlayer");
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Button1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Button1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +73,7 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
                 Button1ActionPerformed(evt);
             }
         });
+        getContentPane().add(Button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 87, 71));
 
         Button2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Button2.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +81,7 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
                 Button2ActionPerformed(evt);
             }
         });
+        getContentPane().add(Button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 87, 71));
 
         Button3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Button3.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +89,7 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
                 Button3ActionPerformed(evt);
             }
         });
+        getContentPane().add(Button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 87, 71));
 
         Button4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Button4.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +97,7 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
                 Button4ActionPerformed(evt);
             }
         });
+        getContentPane().add(Button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 87, 71));
 
         Button5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Button5.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +105,7 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
                 Button5ActionPerformed(evt);
             }
         });
+        getContentPane().add(Button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 87, 71));
 
         Button6.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Button6.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +113,7 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
                 Button6ActionPerformed(evt);
             }
         });
+        getContentPane().add(Button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 87, 71));
 
         Button7.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Button7.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +121,7 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
                 Button7ActionPerformed(evt);
             }
         });
+        getContentPane().add(Button7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 87, 71));
 
         Button8.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Button8.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +129,7 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
                 Button8ActionPerformed(evt);
             }
         });
+        getContentPane().add(Button8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 87, 71));
 
         Button9.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Button9.addActionListener(new java.awt.event.ActionListener() {
@@ -121,9 +137,16 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
                 Button9ActionPerformed(evt);
             }
         });
+        getContentPane().add(Button9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 87, 71));
 
         jButton12.setFont(new java.awt.Font("Baskerville Old Face", 0, 16)); // NOI18N
         jButton12.setText("Results");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 107, 33));
 
         resetButton.setFont(new java.awt.Font("Baskerville Old Face", 0, 16)); // NOI18N
         resetButton.setText("Reset");
@@ -132,141 +155,159 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
                 resetButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 107, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Button4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(Button8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Button9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Button2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Button5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Button6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Button3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(resetButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Button1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Button3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Button2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Button4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(Button6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Button5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Button7, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Button9, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Button8, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 172, 172))))
-        );
+        jButton1.setFont(new java.awt.Font("Baskerville Old Face", 0, 16)); // NOI18N
+        jButton1.setText("Menu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 107, 31));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/main.jpeg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1ActionPerformed
         // TODO add your handling code here:
-        play(0, 0);
+        if (!tabl.isTheCellClicked(0, 0))
+        {
+            play(0, 0);
+            tabl.setTheCellClicked(0, 0);
+        }
+
     }//GEN-LAST:event_Button1ActionPerformed
 
     private void Button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button2ActionPerformed
         // TODO add your handling code here:
-        play(0, 1);
+        if (!tabl.isTheCellClicked(0, 1))
+        {
+            play(0, 1);
+            tabl.setTheCellClicked(0, 1);
+        }
+
     }//GEN-LAST:event_Button2ActionPerformed
 
     private void Button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button3ActionPerformed
         // TODO add your handling code here:
-        play(0, 2);
+        if (!tabl.isTheCellClicked(0, 2))
+        {
+            play(0, 2);
+            tabl.setTheCellClicked(0, 2);
+        }
     }//GEN-LAST:event_Button3ActionPerformed
 
     private void Button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button4ActionPerformed
         // TODO add your handling code here:
-        play(1, 0);
+        if (!tabl.isTheCellClicked(1, 0))
+        {
+            play(1, 0);
+            tabl.setTheCellClicked(1, 0);
+        }
     }//GEN-LAST:event_Button4ActionPerformed
 
     private void Button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button5ActionPerformed
         // TODO add your handling code here:
-        play(1, 1);
+        if (!tabl.isTheCellClicked(1, 1))
+        {
+            play(1, 1);
+            tabl.setTheCellClicked(1, 1);
+        }
     }//GEN-LAST:event_Button5ActionPerformed
 
     private void Button6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button6ActionPerformed
-        play(1, 2);
+        if (!tabl.isTheCellClicked(1, 2))
+        {
+            play(1, 2);
+            tabl.setTheCellClicked(1, 2);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_Button6ActionPerformed
 
     private void Button7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button7ActionPerformed
         // TODO add your handling code here:
-        play(2, 0);
+        if (!tabl.isTheCellClicked(2, 0))
+        {
+            play(2, 0);
+            tabl.setTheCellClicked(2, 0);
+        }
 
     }//GEN-LAST:event_Button7ActionPerformed
 
     private void Button8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button8ActionPerformed
         // TODO add your handling code here:
-        play(2, 1);
+        if (!tabl.isTheCellClicked(2, 1))
+        {
+            play(2, 1);
+            tabl.setTheCellClicked(2, 1);
+        }
 
     }//GEN-LAST:event_Button8ActionPerformed
 
     private void Button9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button9ActionPerformed
         // TODO add your handling code here:
-        play(2, 2);
+        if (!tabl.isTheCellClicked(2, 2))
+        {
+            play(2, 2);
+            tabl.setTheCellClicked(2, 2);
+        }
     }//GEN-LAST:event_Button9ActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // TODO add your handling code here:
         this.removeAll();
-        MultiPlayerJFrame newOne = new MultiPlayerJFrame(player1, player2);
+        MultiPlayerJFrame newOne = new MultiPlayerJFrame(this.player1, this.player2, new Table());
+        newOne.setPlayer1Name(player1Name);
+        newOne.setPlayer2Name(player2Name);
         newOne.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_resetButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        ThemainJFrame ba = new ThemainJFrame(this, true);
+        ba.setLocationRelativeTo(null);
+        ba.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+
+        MultiResultJDialog n = new MultiResultJDialog(this, true);
+        n.setLocation(200, 200);
+        n.setPlayer1Name(player1Name);
+        n.setPlayer2Name(player2Name);
+        n.display();
+        n.setVisible(true);
+
+    }//GEN-LAST:event_jButton12ActionPerformed
+
     public int play(int x, int y) {
+        ImageIcon icon = new ImageIcon("C:\\Users\\Prashan\\Desktop\\TikTacToe\\src\\image\\tiktak.jpeg");
+        ImageIcon icon2 = new ImageIcon("C:\\Users\\Prashan\\Desktop\\TikTacToe\\src\\image\\2.jpeg");
         if (!finished) {
 
             if (player == 1) {
                 player1.setX(x);
                 player1.setY(y);
-                buttons[x][y].setText("X");
+                buttons[x][y].setIcon(icon);
                 player1.play(game.getGameTable());
                 player = 2;
 
                 if (game.isGameOver() == player1.getUserSymbol()) {
-                   
+
                     JOptionPane.showMessageDialog(new JDialog(), "Game WIN by " + player1.getName());
-                    hs.setPlayer1St("won");
-                    hs.saveData();
+                    hs.setPlayer1St("Won");
+                    hs.setPlayer2St("Lost");
+                    hs.setPlayer1(player1Name);
+                    hs.setPlayer2(player2Name);
+                    hs.setType(2);
+                    hs.saveData(player1Name, player2Name);
                     finished = true;
                     return 0;
                 }
@@ -275,28 +316,51 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
                 player2.setX(x);
                 player2.setY(y);
                 player2.play(game.getGameTable());
-                buttons[x][y].setText("O");
+                buttons[x][y].setIcon(icon2);
                 player = 1;
                 if (game.isGameOver() == player2.getUserSymbol()) {
-                   
+
                     JOptionPane.showMessageDialog(new JDialog(), "Game WIN by " + player2.getName());
-                    hs.setPlayer2St("won");
-                    hs.saveData();
+                    hs.setPlayer1St("Lost");
+                    hs.setPlayer2St("Won");
+                    hs.setPlayer1(player1Name);
+                    hs.setPlayer2(player2Name);
+                    hs.setType(2);
+                    hs.saveData(player1Name, player2Name);
                     finished = true;
                     return 0;
                 }
             }
             if (game.isGameOver() == -1) {
-               
+
                 JOptionPane.showMessageDialog(new JDialog(), "Game is DRAW");
-                hs.setPlayer1St("won");
-                hs.setPlayer2St("won");
-                hs.saveData();
+                hs.setPlayer1St("Draw");
+                hs.setPlayer2St("Draw");
+                hs.setPlayer1(player1Name);
+                hs.setPlayer2(player2Name);
+                hs.setType(2);
+                hs.saveData(player1Name, player2Name);
                 finished = true;
                 return 0;
             }
         }
         return -1;
+    }
+
+    public String getPlayer1Name() {
+        return player1Name;
+    }
+
+    public void setPlayer1Name(String player1Name) {
+        this.player1Name = player1Name;
+    }
+
+    public String getPlayer2Name() {
+        return player2Name;
+    }
+
+    public void setPlayer2Name(String player2Name) {
+        this.player2Name = player2Name;
     }
 
     public static void main(String args[]) {
@@ -341,7 +405,9 @@ public class MultiPlayerJFrame extends javax.swing.JFrame {
     private javax.swing.JButton Button7;
     private javax.swing.JButton Button8;
     private javax.swing.JButton Button9;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton12;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton resetButton;
     // End of variables declaration//GEN-END:variables
 JButton[][] buttons = new JButton[3][3];

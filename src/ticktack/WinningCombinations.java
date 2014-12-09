@@ -4,7 +4,7 @@ package ticktack;
 
 public class WinningCombinations {
     
-    private Cell[] cellCombination = new Cell[3]; //temporary array of cells to store a particular combination...
+    private Cell[] cell = new Cell[3]; //temporary array of cells to store a particular combination...
                                                   //on the game board
     private Cell endCell;
     private int j = 0;
@@ -12,41 +12,41 @@ public class WinningCombinations {
     private int freeCells = 0;
     
     public WinningCombinations(Cell cell1, Cell cell2, Cell cell3) {
-        cellCombination[0] = cell1;
-        cellCombination[1] = cell2;
-        cellCombination[2] = cell3;
+        cell[0] = cell1;
+        cell[1] = cell2;
+        cell[2] = cell3;
     }
 
-    public boolean oneMoveToWin(int x_o){
+    public boolean checkingWhetherOneMoveToWin(int x_o){
         for (int i = 0; i < 3; i++) {       // counting number of free cells
-            if (!cellCombination[i].isClicked()) {
+            if (!cell[i].isClicked()) {
                 freeCells++;
             }
         }
         
-        if((freeCells == 1) && (cellCombination[0].getStatus() == x_o || cellCombination[1].getStatus() == x_o)){
-            if((cellCombination[0].getStatus() == cellCombination[1].getStatus()) || (cellCombination[0].getStatus() == cellCombination[2].getStatus()) || (cellCombination[1].getStatus() == cellCombination[2].getStatus())){
+        if((freeCells == 1) && (cell[0].getStatus() == x_o || cell[1].getStatus() == x_o)){
+            if((cell[0].getStatus() == cell[1].getStatus()) || (cell[0].getStatus() == cell[2].getStatus()) || (cell[1].getStatus() == cell[2].getStatus())){
                 freeCells = 0;
-                return true;
+                return true; //yes one move to win
             }
             else{
                 freeCells = 0;
-                return false;
+                return false; //no not one move to win
             }
         }
 
         else{
             freeCells = 0;
-            return false;
+            return false;    // no not one move to win
         }
     }
     
-    public boolean win(){
-        if((cellCombination[0].getStatus() == -1) &&(cellCombination[1].getStatus() == -1) &&(cellCombination[2].getStatus() == -1)){
+    public boolean hasWin(){
+        if((cell[0].getStatus() == -1) &&(cell[1].getStatus() == -1) &&(cell[2].getStatus() == -1)){
             return false;
         }
-        if(cellCombination.length != 0 && (cellCombination[0].getStatus() == cellCombination[1].getStatus()) &&(cellCombination[1].getStatus() == cellCombination[2].getStatus()) ){
-            return true;
+        if(cell.length != 0 && (cell[0].getStatus() == cell[1].getStatus()) &&(cell[1].getStatus() == cell[2].getStatus()) ){
+            return true;   //won the game
         }
         else{
             return false;
@@ -54,19 +54,19 @@ public class WinningCombinations {
     }
     
     public int whoWon(){
-        return cellCombination[0].getStatus();
+        return cell[0].getStatus();    //send the symbol
     }
     
     public Cell[] corners(){
         Cell[] c = new Cell[2];
-        if(isAnEndPoint(cellCombination[0])){
-            c[0] = cellCombination[0];
+        if(isAnEndPoint(cell[0])){
+            c[0] = cell[0];
         }
         else{
             c[0] = new Cell();
         }
-        if(isAnEndPoint(cellCombination[1])){
-            c[1] = cellCombination[1];
+        if(isAnEndPoint(cell[1])){
+            c[1] = cell[1];
         }
         else{
             c[1] = new Cell();
@@ -78,7 +78,7 @@ public class WinningCombinations {
     public int sum(){
         int t = 0;
         for (int i = 0; i < 3; i++) {
-            t += cellCombination[i].getStatus();
+            t += cell[i].getStatus();
         }
         return t;
     }
@@ -86,7 +86,7 @@ public class WinningCombinations {
     /* Is the possibleWin is single */
     public boolean isSingle(){
         if((sum() != -3)){
-            if (((cellCombination[0].getStatus() == -1 && cellCombination[1].getStatus() == -1) || (cellCombination[0].getStatus() == -1 && cellCombination[2].getStatus() == -1) || (cellCombination[1].getStatus() == -1 && cellCombination[2].getStatus() == -1))) {
+            if (((cell[0].getStatus() == -1 && cell[1].getStatus() == -1) || (cell[0].getStatus() == -1 && cell[2].getStatus() == -1) || (cell[1].getStatus() == -1 && cell[2].getStatus() == -1))) {
                 return true;
             }
             else{
@@ -101,8 +101,8 @@ public class WinningCombinations {
 
     public Cell getEndCell() {
         for (int i = 0; i < 3; i++) {
-            if(!cellCombination[i].isClicked()){
-                endCell = cellCombination[i];
+            if(!cell[i].isClicked()){
+                endCell = cell[i];
             }
         }
         return endCell;
@@ -121,7 +121,7 @@ public class WinningCombinations {
     }
     
     public Cell[] getTwoEnds(){
-        Cell[] c = {cellCombination[0], cellCombination[2]};
+        Cell[] c = {cell[0], cell[2]};
         return c;
     }
     

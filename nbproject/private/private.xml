@@ -3,19 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/DoubleJDialog.java</file>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/SinglePlayerJFrame.java</file>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/SingleJDialog.java</file>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/History.java</file>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/Person.java</file>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/Table.java</file>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/Computer.java</file>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/WinningCombinations.java</file>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/MultiPlayerJFrame.java</file>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/ThemainJFrame.java</file>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/DBConnecter.java</file>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/Game.java</file>
-            <file>file:/C:/Users/Prashan/Desktop/TickTack_Prashan_Siri/src/ticktack/Player.java</file>
+            <file>file:/C:/Users/Prashan/Desktop/TikTacToe/src/ticktack/SingleJDialog.java</file>
+            <file>file:/C:/Users/Prashan/Desktop/TikTacToe/src/ticktack/SinglePlayerJFrame.java</file>
+            <file>file:/C:/Users/Prashan/Desktop/TikTacToe/src/ticktack/MultiPlayerJFrame.java</file>
+            <file>file:/C:/Users/Prashan/Desktop/TikTacToe/src/ticktack/Computer.java</file>
+            <file>file:/C:/Users/Prashan/Desktop/TikTacToe/src/ticktack/Game.java</file>
+            <file>file:/C:/Users/Prashan/Desktop/TikTacToe/src/ticktack/TickTack.java</file>
+            <file>file:/C:/Users/Prashan/Desktop/TikTacToe/src/ticktack/DoubleJDialog.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,13 +1,10 @@
 package ticktack;
-
-
 import java.sql.*;
-
 
 public class DBConnecter {
     private static DBConnecter singleton = null;
     private Connection con;
-    private Statement st;
+    //private Statement st;
     //private ResultSet rs;
     
   public synchronized static DBConnecter getConnection(){
@@ -23,15 +20,15 @@ public class DBConnecter {
     private DBConnecter(){
         
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+          //  Class.forName("com.mysql.jdbc.Driver");
             
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tictactoe","root","");
-            st = con.createStatement();
+           // st = con.createStatement();
             
             
         }
         catch(Exception ex){
-            System.out.println("Error 123 "+ex);
+            System.out.println("Error machan"+ex);
         }
     }
     

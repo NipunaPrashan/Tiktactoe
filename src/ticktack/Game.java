@@ -19,7 +19,7 @@ public class Game {
         //checks for the winner
         for (int i = 0; i < 8; i++) {
             try {
-                if (wins[i].win()) {
+                if (wins[i].hasWin()) {
                     System.out.println("Winner: " + wins[i].whoWon());  //print the winner along with the symbol used
                     finished = true;
                     return wins[i].whoWon();
@@ -28,7 +28,6 @@ public class Game {
             } catch (Exception e) {
             }
 
-            /* if the game is finished with no winners */
             if (gameBoard.isTableFull()) {
                 System.out.println("Game ends\n But there is NO WINNER!");
                 finished = true;

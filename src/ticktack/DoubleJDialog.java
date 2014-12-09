@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ticktack;
 
 /**
@@ -14,10 +10,11 @@ public class DoubleJDialog extends javax.swing.JDialog {
     /**
      * Creates new form DoubleJDialog
      */
-    History hs = new History();
+    private Table tl = new Table();
     public DoubleJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
         
     }
 
@@ -35,26 +32,38 @@ public class DoubleJDialog extends javax.swing.JDialog {
         pl1 = new javax.swing.JTextField();
         pl2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(457, 303));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Baskerville Old Face", 1, 16)); // NOI18N
         jLabel1.setText("Player 1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(90, 50, 80, 16);
 
         jLabel2.setFont(new java.awt.Font("Baskerville Old Face", 1, 16)); // NOI18N
         jLabel2.setText("Player 2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(90, 100, 60, 16);
 
         pl1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pl1ActionPerformed(evt);
             }
         });
+        getContentPane().add(pl1);
+        pl1.setBounds(180, 50, 132, 29);
 
         pl2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pl2ActionPerformed(evt);
             }
         });
+        getContentPane().add(pl2);
+        pl2.setBounds(180, 90, 132, 28);
 
         jButton1.setFont(new java.awt.Font("Baskerville Old Face", 1, 16)); // NOI18N
         jButton1.setText("Submit");
@@ -63,58 +72,34 @@ public class DoubleJDialog extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(200, 140, 100, 25);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(pl2, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                        .addComponent(pl1)))
-                .addContainerGap(106, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pl1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(pl2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(110, Short.MAX_VALUE))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/main.jpeg"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, 0, 460, 310);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void pl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pl1ActionPerformed
         // TODO add your handling code here:
-        String first =pl1.getText();
-        String second = pl2.getText();
-        hs.setPlayer1(first);
-        hs.setPlayer1(second);
+        
 
         
     }//GEN-LAST:event_pl1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String first =pl1.getText();
+        String second = pl2.getText();
+        
         Person person1 = new Person(pl1.getText(), 1);
         Person person2 = new Person(pl2.getText(), 0);
-        MultiPlayerJFrame multiPlayerJFrame = new MultiPlayerJFrame(person1, person2);
+        MultiPlayerJFrame multiPlayerJFrame = new MultiPlayerJFrame(person1, person2,tl);
+        multiPlayerJFrame.setPlayer1Name(first);
+        multiPlayerJFrame.setPlayer2Name(second);
+        
         multiPlayerJFrame.setVisible(true);
         this.setVisible(false);
         
@@ -170,6 +155,7 @@ public class DoubleJDialog extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField pl1;
     private javax.swing.JTextField pl2;
     // End of variables declaration//GEN-END:variables

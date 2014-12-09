@@ -31,8 +31,12 @@ public class ThemainJFrame extends javax.swing.JDialog {
         singlePlayerButton = new javax.swing.JButton();
         doublePlayerButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(450, 300));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
         singlePlayerButton.setFont(new java.awt.Font("Baskerville Old Face", 1, 16)); // NOI18N
         singlePlayerButton.setText("Single Player");
@@ -41,6 +45,8 @@ public class ThemainJFrame extends javax.swing.JDialog {
                 singlePlayerButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(singlePlayerButton);
+        singlePlayerButton.setBounds(139, 87, 181, 40);
 
         doublePlayerButton.setFont(new java.awt.Font("Baskerville Old Face", 1, 16)); // NOI18N
         doublePlayerButton.setText("Double Player");
@@ -49,36 +55,19 @@ public class ThemainJFrame extends javax.swing.JDialog {
                 doublePlayerButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(doublePlayerButton);
+        doublePlayerButton.setBounds(139, 151, 181, 40);
 
-        jLabel1.setFont(new java.awt.Font("Tekton Pro Cond", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tekton Pro Cond", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("TicTacToe");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(80, 20, 292, 37);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(doublePlayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(singlePlayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(102, 102, 102))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addComponent(singlePlayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(doublePlayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/main.jpeg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 460, 310);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -86,15 +75,19 @@ public class ThemainJFrame extends javax.swing.JDialog {
     private void singlePlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singlePlayerButtonActionPerformed
         // TODO add your handling code here:
         SingleJDialog singleJDialog = new SingleJDialog(null, rootPaneCheckingEnabled);
+        this.setVisible(false);
+        singleJDialog.setLocationRelativeTo(null);
         singleJDialog.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_singlePlayerButtonActionPerformed
 
     private void doublePlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doublePlayerButtonActionPerformed
         // TODO add your handling code here:
         DoubleJDialog doubleJDialog = new DoubleJDialog(null, rootPaneCheckingEnabled);
+        this.setVisible(false);
+        doubleJDialog.setLocationRelativeTo(null);
         doubleJDialog.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_doublePlayerButtonActionPerformed
 
     /**
@@ -142,6 +135,7 @@ public class ThemainJFrame extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton doublePlayerButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton singlePlayerButton;
     // End of variables declaration//GEN-END:variables
 }

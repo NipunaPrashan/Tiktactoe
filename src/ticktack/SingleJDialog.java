@@ -14,9 +14,13 @@ public class SingleJDialog extends javax.swing.JDialog {
     /**
      * Creates new form SingleJDialog
      */
+    private Table tabl = new Table();
+    private String player;
+    
     public SingleJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
     }
 
     /**
@@ -28,14 +32,20 @@ public class SingleJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         pl1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(459, 307));
+        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Baskerville Old Face", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Baskerville Old Face", 1, 18)); // NOI18N
         jLabel1.setText("Player Name");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(170, 30, 111, 26);
 
         pl1.setFont(new java.awt.Font("Baskerville Old Face", 0, 16)); // NOI18N
         pl1.addActionListener(new java.awt.event.ActionListener() {
@@ -43,7 +53,10 @@ public class SingleJDialog extends javax.swing.JDialog {
                 pl1ActionPerformed(evt);
             }
         });
+        getContentPane().add(pl1);
+        pl1.setBounds(150, 80, 150, 30);
 
+        jButton1.setBackground(new java.awt.Color(204, 255, 204));
         jButton1.setFont(new java.awt.Font("Baskerville Old Face", 1, 16)); // NOI18N
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -51,36 +64,12 @@ public class SingleJDialog extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(170, 130, 100, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(137, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(pl1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(128, 128, 128))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(161, 161, 161))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(pl1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jButton1)
-                .addContainerGap(84, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/main.jpeg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 460, 310);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -91,9 +80,11 @@ public class SingleJDialog extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        player = pl1.getText();
         Person person = new Person(pl1.getText(), 1);
         Computer computer = new Computer("Computer", 0);
-        SinglePlayerJFrame singlePlayerJFrame = new SinglePlayerJFrame(person, computer);
+        SinglePlayerJFrame singlePlayerJFrame = new SinglePlayerJFrame(person, computer,tabl);
+        singlePlayerJFrame.setThePlayer(player);
         singlePlayerJFrame.setVisible(true);
         this.setVisible(false);
         
@@ -142,8 +133,10 @@ public class SingleJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField pl1;
     // End of variables declaration//GEN-END:variables
 }

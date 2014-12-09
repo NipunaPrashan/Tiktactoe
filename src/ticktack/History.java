@@ -9,13 +9,23 @@ import java.util.logging.Logger;
 
 public class History {
     
-    private String player1 = null;
-    private String player2 = null;
-    private String player1St = null;
-    private String player2St = null;
+    private String player1;
+    private String player2;
+    private String player1St;
+    private String player2St;
+    private int type = -1;
+    
     private static DBConnecter dbCon = DBConnecter.getConnection();
     private Statement st;
     private ResultSet rs;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public void setPlayer1(String player1) {
         this.player1 = player1;
@@ -41,18 +51,31 @@ public class History {
         return player2;
     }
     
-    public void saveData() {
+    public void saveData(String a, String b) {
         try {
-            st = dbCon.getCon().createStatement();
-            String query = "INSERT INTO `users` (`User_Id`, `Player_1`, `Player1_Status`, `Player_2`, `Player2_Status`) VALUES ('', '" + player1 + "', '" + player1St + "','" + player2 + "','" + player2St + "' )";
-            st.executeUpdate(query);
-            //System.out.println("Updated");
+            st = dbCon.getCon().createStatement();            
+            String query1 = "INSERT INTO `tictactoe`.`users` (`Name`, `Status`, `Type`) VALUES ('" + player1 + "', '" + player1St + "','" + type + "')";
+            st.executeUpdate(query1);
+            
+            String query2 = "INSERT INTO `tictactoe`.`users` (`Name`, `Status`, `Type`) VALUES ('" + player2 + "', '" + player2St + "','" + type + "')";
+            st.executeUpdate(query2);
+            System.out.println("Updated");
 
         } catch (SQLException ex) {
             System.out.println("Error 123");
         }
     }
+    public void saveData(String a) {
+        try {
+            st = dbCon.getCon().createStatement();            
+            String query1 = "INSERT INTO `tictactoe`.`users` (`Name`, `Status`, `Type`) VALUES ('" + player1 + "', '" + player1St + "','" + type + "')";
+            st.executeUpdate(query1);
+            System.out.println("Updated");
 
+        } catch (SQLException ex) {
+            System.out.println("Error 123");
+        }
+    }
     
     
 }
