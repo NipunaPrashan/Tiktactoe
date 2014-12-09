@@ -1,12 +1,12 @@
 package ticktack;
 
 public class Player {
-
     private String userName;
     private int userSymbol;  // 1='X' and 0='O'
     private Player opponent;
     private int x;
     private int y;
+    private int userstaus;
 
     public Player(String name, int symbol) {
         this.userName = name;
